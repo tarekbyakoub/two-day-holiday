@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Citypage() {
+export const Citypage = () => {
   return <div>Citypage</div>;
-}
+};

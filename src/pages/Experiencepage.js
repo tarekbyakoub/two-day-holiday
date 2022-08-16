@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Experiencepage() {
+export const Experiencepage = () => {
   return <div>Experiencepage</div>;
-}
+};
