@@ -1,29 +1,44 @@
-import { Title } from '../styled';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { LinkWord } from '../styled';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
+import { style } from '@mui/system';
 
 export const Homepage = () => {
+  const [city, setCity] = useState([]);
+
+  const renderCity = async () => {
+    try {
+      const response = await axios.get('http://localhost:4000/city');
+      const result = response.data;
+      setCity(result);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  useEffect(() => {
+    renderCity();
+  }, []);
+
+  console.log(city);
+
   return (
     <Wrapper>
-      <ImageWrapper>
-        <Image
-          src="https://i.pinimg.com/564x/5d/56/34/5d5634f4a1ee8017c79eac486c72004a.jpg"
-          alt="Paris"
-        />
-      </ImageWrapper>
-      <ImageWrapper>
-        <Image
-          src="https://i.pinimg.com/564x/78/8e/c0/788ec0907b68dfe29cda89d019684b72.jpg"
-          alt="Barcelona"
-        />
-      </ImageWrapper>
-      <ImageWrapper>
-        <Image
-          src="https://i.pinimg.com/564x/de/0b/b4/de0bb4e0448983ce548ad97b33438234.jpg"
-          alt="Amsterdam"
-        />
-      </ImageWrapper>
+      {!city ? (
+        <h2>Loading...</h2>
+      ) : (
+        city.map((c) => (
+          <Link to={`/city/${city.id}`}>
+            {' '}
+            <ImageWrapper>
+              <Image src={c.picture} alt={c.name} />
+              <ImageHeader>{c.name}</ImageHeader>
+            </ImageWrapper>
+          </Link>
+        ))
+      )}
     </Wrapper>
   );
 };
@@ -43,4 +58,13 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+`;
+
+const ImageHeader = styled.h1`
+  color: #14213d;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: #2a9d8f;
+  }
 `;

@@ -1,17 +1,17 @@
-import "./App.css";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { getUserWithStoredToken } from "./store/user/thunks";
-import { Routes, Route } from "react-router-dom";
-import { Navigation, MessageBox } from "./components";
+import './App.css';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getUserWithStoredToken } from './store/user/thunks';
+import { Routes, Route } from 'react-router-dom';
+import { Navigation, MessageBox } from './components';
 import {
-  Homepage,
   Login,
   SignUp,
   Citypage,
   Experiencepage,
   Profilepage,
-} from "./pages";
+  Homepage,
+} from './pages';
 
 function App() {
   const dispatch = useDispatch();
