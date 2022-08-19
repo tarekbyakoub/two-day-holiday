@@ -11,6 +11,9 @@ import {
   Experiencepage,
   Profilepage,
   Homepage,
+  Amsterdam,
+  Paris,
+  Barcelona,
 } from './pages';
 
 function App() {
@@ -28,7 +31,9 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/city/:id" element={<Citypage />} />
+        <Route path="/amsterdam" element={<Amsterdam />} />
+        <Route path="/paris" element={<Paris />} />
+        <Route path="/barcelona" element={<Barcelona />} />
         <Route path="/experience/:id" element={<Experiencepage />} />
         <Route path="/user/:id" element={<Profilepage />} />
       </Routes>
