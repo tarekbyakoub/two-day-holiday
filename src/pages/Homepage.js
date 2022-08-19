@@ -1,16 +1,16 @@
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useState } from 'react';
-import styled from 'styled-components';
-import { style } from '@mui/system';
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import styled from "styled-components";
+import { style } from "@mui/system";
 
 export const Homepage = () => {
   const [city, setCity] = useState([]);
 
   const renderCity = async () => {
     try {
-      const response = await axios.get('http://localhost:4000/city');
+      const response = await axios.get("http://localhost:4000/city");
       const result = response.data;
       setCity(result);
     } catch (e) {
@@ -30,8 +30,8 @@ export const Homepage = () => {
         <h2>Loading...</h2>
       ) : (
         city.map((c) => (
-          <Link to={`/city/${city.id}`}>
-            {' '}
+          <Link to={`/${c.name}`}>
+            {" "}
             <ImageWrapper>
               <Image src={c.picture} alt={c.name} />
               <ImageHeader>{c.name}</ImageHeader>

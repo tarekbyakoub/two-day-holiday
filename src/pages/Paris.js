@@ -2,20 +2,46 @@ import React from "react";
 import axios from "axios";
 import { CityExperienceCard } from "../components/CityExperienceCard";
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 export const Paris = () => {
+  const Container = styled.div`
+    display: flex;
+    justify-content: center;
+  `;
   const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    align-self: center;
+    a:link {
+      text-decoration: none;
+      color: black;
+    }
+    a:visited {
+      text-decoration: none;
+      color: black;
+    }
+    a:
+    width: 700px;
   `;
   const Card = styled.div`
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e1e5f2;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 15px;
   `;
+
   const CardData = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    text-align: center;
   `;
-
   const Username = styled.h1``;
 
   const paris = [
@@ -89,16 +115,20 @@ export const Paris = () => {
   ];
 
   return (
-    <Wrapper>
-      {paris.map((e) => {
-        return (
-          <Card>
-            <Username>{e.name}</Username>
-            <img src={e.imageUrl} style={{ width: "300px" }} />
-            <CardData>{e.content}</CardData>
-          </Card>
-        );
-      })}
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        {paris.map((e) => {
+          return (
+            <Link to={`/paris/${paris.indexOf(e) + 1}`}>
+              <Card>
+                <Username>{e.name}</Username>
+                <img src={e.imageUrl} style={{ width: "300px" }} />
+                <CardData>{e.content}</CardData>
+              </Card>
+            </Link>
+          );
+        })}
+      </Wrapper>
+    </Container>
   );
 };
